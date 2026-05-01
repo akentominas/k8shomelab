@@ -10,7 +10,7 @@ sudo nano /etc/netplan/01-netcfg.yaml
 
 *(Your filename might differ—check `/etc/netplan/`)*
 
-### ✏️ Example Configuration
+### Example Configuration
 
 ```yaml
 network:
@@ -27,14 +27,14 @@ network:
                 addresses: [8.8.8.8, 1.1.1.1]
 ```
 
-### 🧠 What Each Line Means
+### What Each Line Means
 
 - `dhcp4: no` → Disable router assignment
 - `addresses` → Your fixed IP
 - `routes` → Default gateway (router)
 - `nameservers` → DNS resolution
 
-### 🔒 Fix Permissions (Important)
+### Fix Permissions (Important)
 
 ```bash
 sudo chmod 600 /etc/netplan/*.yaml
@@ -42,13 +42,13 @@ sudo chmod 600 /etc/netplan/*.yaml
 
 *Prevents warnings + enforces security*
 
-### 🚀 Apply Config
+### Apply Config
 
 ```bash
 sudo netplan apply
 ```
 
-### ✅ Verify
+### Verify
 
 ```bash
 ip a
