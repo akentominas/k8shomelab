@@ -1,5 +1,7 @@
 # k8shomelab
 Automating a Kubernetes cluster on repurposed hardware. Featuring a Fujitsu A514 control plane and Lenovo 330S worker nodes running Ubuntu Server.
+<img width="1600" height="1200" alt="image" src="https://github.com/user-attachments/assets/c0d96979-ba98-4e9f-a418-88f2e0215daf" />
+
 
 ## 💻 Laptop-Powered K8s Homelab
 This repository contains the configuration, automation scripts, and documentation for my bare-metal Kubernetes cluster running on repurposed laptops.
