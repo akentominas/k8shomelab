@@ -1,0 +1,15 @@
+all:
+  children:
+    control_plane:
+      hosts:
+        k8smaster:
+          ansible_host: 192.168.1.51
+          ansible_user: k8smaster  # Ο χρήστης του Fujitsu
+    workers:
+      hosts:
+        k8sworker:
+          ansible_host: 192.168.1.208
+          ansible_user: k8sworker   # Ο χρήστης του Lenovo
+
+  vars:
+    ansible_ssh_private_key_file: ~/.ssh/id_ed25519
