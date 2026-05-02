@@ -1,0 +1,5 @@
+- name: Kubernetes prerequisites
+  hosts: all
+  become: true
+  roles:
+    - k8s_prereqs

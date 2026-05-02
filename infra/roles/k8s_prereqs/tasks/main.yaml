@@ -1,0 +1,26 @@
+- name: Ensure swap is disabled
+  block:
+    - name: Disable swap
+      command: swapoff -a
+      when: ansible_facts["swaptotal_mb"] > 0
+
+    - name: Remove swap from fstab
+      replace:
+        path: /etc/fstab
+        regexp: '^.*swap.*$'
+        replace: '# \g<0>'
+
+- name: Load kernel modules
+  modprobe:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - overlay
+    - br_netfilter
+
+- name: Persist kernel modules
+  copy:
+    dest: /etc/modules-load.d/k8s.conf
+    content: |
+      overlay
+      br_netfilter

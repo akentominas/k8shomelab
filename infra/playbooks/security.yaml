@@ -1,0 +1,5 @@
+- name: SSH Hardening
+  hosts: all
+  become: true
+  roles:
+    - security
