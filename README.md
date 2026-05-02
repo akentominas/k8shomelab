@@ -14,7 +14,14 @@ Using laptops for a homelab is a strategic choice: they come with a built-in "UP
 ## 🛠️ The Tech Stack
 - Orchestration: Kubeadm.
 - Automation: Ansible (for OS hardening and K8s bootstrapping).
-- CNI: Flannel / Calico.
+- CNI: Cilium.
 - Load Balancer: MetalLB.
 - Ingress: Nginx Ingress Controller.
+
+## 📁 Project Structure
+
+- **bootstrap/**: Manual setup guides for preparing the hardware (laptops) that will serve as the Kubernetes cluster servers.
+- **infra/**: Ansible playbooks and configurations for automated system preparation and initial setup of the nodes.
+- **cluster/**: Configurations and automation for the actual Kubernetes cluster deployment, using GitOps principles.
+
 ## 🚀 Roadmap / Implementation Steps
