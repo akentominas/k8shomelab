@@ -1,0 +1,73 @@
+- name: Check kubelet binary
+  command: which kubelet
+  register: kubelet_path
+  changed_when: false
+
+- name: Show kubelet path
+  debug:
+    var: kubelet_path.stdout
+
+
+- name: Check kubeadm binary
+  command: which kubeadm
+  register: kubeadm_path
+  changed_when: false
+
+- name: Show kubeadm path
+  debug:
+    var: kubeadm_path.stdout
+
+
+- name: Check kubectl binary
+  command: which kubectl
+  register: kubectl_path
+  changed_when: false
+
+- name: Show kubectl path
+  debug:
+    var: kubectl_path.stdout
+
+
+# --- Versions ---
+
+- name: Get kubelet version
+  command: kubelet --version
+  register: kubelet_version
+  changed_when: false
+
+- name: Show kubelet version
+  debug:
+    var: kubelet_version.stdout
+
+
+- name: Get kubeadm version
+  command: kubeadm version -o short
+  register: kubeadm_version
+  changed_when: false
+
+- name: Show kubeadm version
+  debug:
+    var: kubeadm_version.stdout
+
+
+- name: Get kubectl version
+  command: kubectl version --client
+  register: kubectl_version
+  changed_when: false
+
+- name: Show kubectl version
+  debug:
+    var: kubectl_version.stdout
+
+
+# --- Service check ---
+
+- name: Check kubelet service status
+  command: systemctl is-active kubelet
+  register: kubelet_status
+  changed_when: false
+  failed_when: kubelet_status.stdout not in ["active", "activating"]
+
+- name: Show kubelet status
+  debug:
+    var: kubelet_status.stdout

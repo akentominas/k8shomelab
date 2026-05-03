@@ -1,0 +1,43 @@
+- name: Install required packages
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+    state: present
+    update_cache: yes
+
+- name: Add Kubernetes GPG key
+  apt_key:
+    url: https://pkgs.k8s.io/core:/stable:/v1.29/deb/Release.key
+    state: present
+
+- name: Add Kubernetes repository
+  apt_repository:
+    repo: "deb https://pkgs.k8s.io/core:/stable:/v1.29/deb/ /"
+    state: present
+
+- name: Install Kubernetes components
+  apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
+    state: present
+    update_cache: yes
+
+- name: Hold Kubernetes packages
+  apt:
+    name:
+      - kubelet
+      - kubeadm
+      - kubectl
+    state: present
+    allow_change_held_packages: no
+    dpkg_options: "force-confdef,force-confold"
+
+- name: Enable kubelet
+  service:
+    name: kubelet
+    enabled: true
+    state: started

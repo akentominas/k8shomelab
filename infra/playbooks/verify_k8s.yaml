@@ -1,0 +1,6 @@
+- name: Verify Kubernetes installation
+  hosts: all
+  become: true
+
+  roles:
+    - verify_k8s

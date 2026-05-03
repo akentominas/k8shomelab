@@ -1,0 +1,6 @@
+- name: Install container runtime
+  hosts: all
+  become: true
+
+  roles:
+    - containerd
